@@ -21,8 +21,8 @@ def measureFlow(channel):
 IO.add_event_detect(FLOW_SENSOR, IO.FALLING, callback = measureFlow)
 
 while True:
-    AinL = round(count/450, 3)    # AinL is total water usage in litres
-    print("/n"AinL" L")
+    AinL = round(float(count)/450, 3)    # AinL is total water usage in litres
+    print(AinL + " L \n")
     time.sleep(5) # Update every 5 s
 
     try:
