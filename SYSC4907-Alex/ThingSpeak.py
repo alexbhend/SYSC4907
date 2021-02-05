@@ -3,7 +3,6 @@ import urllib
 import time
 
 def thingspeak_post(Litres, key):
-    while True:
 
         params = urllib.urlencode({'field1':Litres, 'key':key }) 
         headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
@@ -18,5 +17,3 @@ def thingspeak_post(Litres, key):
             conn.close()
         except:
             print ("connection failed")
-        
-        break
