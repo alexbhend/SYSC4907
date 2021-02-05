@@ -9,7 +9,8 @@ import time, sys
 # Sensor data (Yellow wire) to 4.7K to Pi pin to 10K to GND
 
 FLOW_SENSOR = 14 # Enter GPIO BCM number here
-IO.setmode(GPIO.BCM)
+IO.setwarnings(False)
+IO.setmode(IO.BCM)
 IO.setup(FLOW_SENSOR, IO.IN, pull_up_down = IO.PUD_UP)
 
 global count
