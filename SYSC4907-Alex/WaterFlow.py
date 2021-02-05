@@ -16,11 +16,11 @@ IO.setwarnings(False)
 IO.setmode(IO.BCM)
 IO.setup(FLOW_SENSOR, IO.IN, pull_up_down = IO.PUD_UP)
 
-IO.add_event_detect(FLOW_SENSOR, IO.FALLING, callback = measureFlow)
-
 def measureFlow(channel):
     global count
     count += 1
+
+IO.add_event_detect(FLOW_SENSOR, IO.FALLING, callback = measureFlow)
 
 while True:
     AinL = round((count)/450, 3)    # AinL is total water usage in litres
