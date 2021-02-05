@@ -12,6 +12,8 @@ from ThingSpeak import thingspeak_post
 global count
 count = 0
 
+key = "POEWLXNFCKIFB7ZX"
+
 FLOW_SENSOR = 14 # Enter GPIO BCM number here
 IO.setwarnings(False)
 IO.setmode(IO.BCM)
@@ -26,6 +28,7 @@ IO.add_event_detect(FLOW_SENSOR, IO.FALLING, callback = measureFlow)
 while True:
     AinL = round((float(count)/float(450)), 3)    # AinL is total water usage in litres
     print(str(AinL) + " L \n")
+    thingspeak_post(AinL, key)
     time.sleep(5) # Update every 5 s
 
     try:

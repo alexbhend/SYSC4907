@@ -2,7 +2,7 @@ import httplib
 import urllib
 import time
 
-def thingspeak_post(LotID, FloorID, FloorSpots, SpotID, state, key):
+def thingspeak_post(Litres, key):
     while True:
 
         params = urllib.urlencode({'field1':Litres, 'key':key }) 
