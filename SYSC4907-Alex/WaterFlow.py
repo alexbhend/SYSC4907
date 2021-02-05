@@ -8,18 +8,19 @@ import time, sys
 # 5V to Vcc (Red wire), GND to GND (Black wire)
 # Sensor data (Yellow wire) to 4.7K to Pi pin to 10K to GND
 
+global count
+count = 0
+
 FLOW_SENSOR = 14 # Enter GPIO BCM number here
 IO.setwarnings(False)
 IO.setmode(IO.BCM)
 IO.setup(FLOW_SENSOR, IO.IN, pull_up_down = IO.PUD_UP)
 
-global count
-count = 0
+IO.add_event_detect(FLOW_SENSOR, IO.FALLING, callback = measureFlow)
 
 def measureFlow(channel):
+    global count
     count += 1
-
-IO.add_event_detect(FLOW_SENSOR, IO.FALLING, callback = measureFlow)
 
 while True:
     AinL = round((count)/450, 3)    # AinL is total water usage in litres
