@@ -1,6 +1,7 @@
 import RPi.GPIO as IO
 import time, sys
 from ThingSpeak import thingspeak_post
+from ThingSpeak import thingspeak_read
 
 # Can measure flow rate from 1-30 L/min
 # Each pulse is about 2.25 mL or about 450 pulses / Litre
