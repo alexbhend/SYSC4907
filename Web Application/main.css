@@ -1,0 +1,100 @@
+body{
+    padding:0;
+    margin:0;
+    background:white;
+}
+.navbar{
+    background:white;
+}
+.nav-link{
+    color:#f5f5f5;
+    margin-right: 1em; !important
+}
+.navbar-collapse{
+    justify-content: flex-end;
+}
+.nav-link, 
+.navbar-brand{
+	color: black;
+	cursor: pointer;
+}
+.nav-link:hover{
+	color:green;
+}
+#Title{
+    color:#0f684f;
+    font-weight: 300;
+}
+.line1{
+    border-right: 6px solid #4d4f52;
+    height:300px;
+}
+span.description{
+    float: left;
+    display: inline;
+}
+.loginForm{
+    padding-left:5%;
+}
+span h1,p{
+    padding-left: 10%;
+}
+.row{
+    margin-top:1.5%;
+}
+div h3{
+    text-align: center;
+}
+span.loginLine{
+    float:left;
+    display:inline-block;
+    align-content: center;
+    align-items: center;
+}
+button{
+    margin-top:2.5%;
+    margin-bottom: 3%;
+}
+
+.forgotPassword{
+    margin-left:10%;
+}
+.feature-title{
+    text-align:center;
+    color: #0f684f;
+}
+.features{
+    height:200;
+    width: 200;
+    margin-left: auto;
+    margin-right:auto;
+    display:block;
+}
+.heading{
+    padding-top: 1%;
+    text-align:center;
+    
+}
+img {
+    background-color: transparent;
+}
+.btn-primary {
+    background-color: #0f684f;
+    border-color: #0f684f;
+}
+.btn-outline-primary{
+    border-color: #0f684f;
+    color: #0f684f;
+}
+a {
+    color:#0f684f;
+}
+.graph{
+    background:#4d4f52;
+    text-align: center;
+    align-content: center;
+}
+
+.page-footer{
+    background:#ebebeb;
+}
