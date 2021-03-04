@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Project - Registration</title> 
+		<meta charset ="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="final.css">
+
+	  </head>
+    <body>
+<!--- Login Section ---> 
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 registrationPic">
+                
+            </div>
+            <div class="col-lg-6 registration">
+                <h2 class="heading">Sign Up</h2>
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="fname" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="lname" name="lastname" placeholder="Last Name">
+                    </div>
+            
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputCEmail" placeholder="Enter your email again">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control"id="inputPhoneNum" name="phoneNum" placeholder="Phone number">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="inputCPassword" placeholder="Enter your password Again">
+                    </div>
+                
+                    <div class="input-group">
+                        <select class="form-control" name="where">
+                            <option>Province or Territory</option>
+                            <option value="ON">North America</option>
+                            <option value="AB">Alberta</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="MN">Manitoba</option>
+                            <option value="AB">Alberta</option>
+                        </select>
+            
+                        <select class="form-control" name="city">
+                            <option>City</option>
+                            <option value ="Ottawa">Ottawa</option>
+                            <option value="Toronto">Toronto</option>
+                            <option value="Brampton">Brampton</option>
+                        </select>
+                    </div>
+                    <br>
+                    <input class="btn btn-primary registerButton" type="submit" value="Register" onClick="validatePassword()" href="Account.html">
+                    <br>
+                </form>
+            </div>    
+        </div>
+        
+    </div>
+
+   <!-- <img class="backdrop" src="backdrop.png" width="200px" height="200px"> -->
+<script src="index.js"></script>  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!--<script src="main.js"></script> -->
+    </body>
+</html>
+        

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Home Page</title> 
+		<meta charset ="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="final.css">
+
+	  </head>
+<body>
+<!--- navbar -->
+
+<!--- Side bar -->
+    <div class="container-fluid">
+        <div class="sidenav">
+            <div class="profile">
+                <img src="defaultPic.jpg" width="75px" height="75px" style="border-radius: 50%;">
+                <h6>John Smith</h6>
+            </div>
+            <a href="#">Dashboard</a>
+            <a href="#">Settings</a>
+            <!---<a href="#">Actuator System</a> -->
+            <a href="#">Support</a>
+        
+            <button>Sign out</button>
+            </div>
+    </div>
+
+<!---- main content -->
+    <div class="container-fluid main">
+        <h3 class="AccountHeading">Main Page</h3>
+        <!-- Consumption row -->
+        <div class="form-group row">
+            <div class="col-lg-12 col-md-12 col-sm-12 consumption">
+                <div class="row">
+                    <div class="col-lg-4 cText">
+                        <h4 class="mainHeadings">Consumption</h4>
+                        <p>For the past 12 Hours</p>
+                        <ul>
+                            <li>Water</li>
+                            <li>Electricity</li>
+                            <li>Actuator</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-lg-8 graph">
+                        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1160881/charts/1?api_key=473GSMPC4BD4R44T" bgcolor="%23ffffff&color%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+<!--- Actuator System and Feedback Content Row -->
+        <div class="form-group row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="actuator">
+                    <h4 class="mainHeadings">Actuator Device</h4>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <p>Status:<span> Online</span></p>
+                            <a href="#">Settings:</a>
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="progress" id="completion"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="feedback">
+                    <span class="mainHeadings"><h4>Feedback</h4></span>
+                    <span class="badge">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+         
+        
+
+   <!-- <img class="backdrop" src="backdrop.png" width="200px" height="200px"> -->
+<script src="main.js"></script>
+<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+    </body>
+</html>
+        

@@ -1,0 +1,208 @@
+body{
+    padding:0;
+    margin:0;
+    background:#f3f3f3;
+}
+.sidenav{
+    height:100%;
+    width:160px;
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    background-color:#ffffff;
+    @overflow-x:hidden;
+    padding-top:20px;
+}
+.profile{
+    text-align: center;
+    margin-bottom: 10%;
+}
+.sidenav a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size:15px;
+    color:#4A4A4A;
+    display:block;
+}
+.sidenav button{
+    position:Fixed;
+    bottom:0;
+    background-color: white;
+    border-radius:2px;
+    border:1px solid white;
+    color: #4A4A4A;
+    font-size: 15px;
+    padding: 6px 8px 6px 16px;
+}
+li input {
+    border: none;
+    border-bottom: 2px solid white;
+    border-radius: 2px;
+    background-color: #0f684f;
+}
+input{
+    color:white;
+}
+li input:focus{
+    color:aquamarine;
+    border:none;
+    border-color:#0f684f;
+}
+.backdrop{
+    position: absolute;
+    right:0;
+    bottom:0;
+    width:400px;
+    height:400px;
+}
+
+.Intro{
+    height:400px;
+    width:400px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:7%;
+    background-color:white;
+    border-radius: 10px;
+    padding-left:4%;
+    padding-right:4%;
+}
+.registration{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:4%;
+    padding-right:4%;
+    height:auto;
+    width:50%;
+    background-color: white;
+    border-radius:10px;
+}
+.registrationPic{
+    background:url(backdrop.png);
+}
+.heading{
+    padding-top:5%;
+    margin-bottom: 5%;
+}
+.form-control{
+    border:none;
+    border-bottom: 1.5px solid #0f684f;
+    border-radius: 0px;
+}
+.form-control-select{
+    border:none;
+    border-bottom: 2px solid #0f684f;
+    border-radius: 0px;
+    display: block;
+    margin-left:4%;
+    margin-right:4%;
+}
+.btn-outline-primary{
+    border-color: #0f684f;
+    color:#0f684f;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    border-radius:50px;
+}
+.btn-outline-primary:hover{
+    background-color: #0f684f;
+    border-color: #0f684f;
+}
+.btn-primary:hover{
+    background-color:#0f684f;
+    color:white;
+    border-color: black;
+}
+.login{
+    background-color: #0f684f;
+    border-color: #0f684f;
+    border-radius: 50px;
+    width:175%;
+}
+
+.heading{
+    text-align: center;
+} 
+
+span.loginLine{
+    float:left;
+    display:inline-block;
+}
+button{
+    margin-top:2.5%;
+    margin-bottom: 3%;
+}
+button a{
+    color:#0f684f;
+    text-decoration: none;
+}
+button a:hover{
+    color: white;
+    text-decoration: none;
+}
+.registerButton{
+    color:white;
+    background-color: #0f684f;
+    border-color: #0f684f;
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+    border-radius: 50px;
+    width:30%;
+}
+
+.forgotPassword{
+    color:#f69a38;
+}
+
+.main{
+    margin-top:3%;
+    padding-left:190px;
+    position:relative;
+}
+.AccountHeading{
+    color:#4A4A4A
+}
+.mainHeadings{
+    color:#0f684f;
+}
+.subtitle{
+    color:#b6b6b7;
+}
+.consumption{
+    background-color:white;
+    padding:2%;
+    height:auto;
+}
+.graph{
+    display:block;
+    padding-left:auto;
+    padding-right:auto;
+}
+.theGraph{
+    height:100%;
+    width:70%;
+}
+.row2{
+    width:100%;
+}
+.feedback{
+    background-color:white;
+    height:auto;
+    padding:2%;
+}
+.actuator{
+    background-color:white;
+    height:200px;
+    padding-left:4%;
+    padding-top: 4%;
+}
+.progress{
+    width:100%;
+    height:70%;
+    background-color:white;
+}
