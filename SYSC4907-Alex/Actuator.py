@@ -8,8 +8,8 @@ IO.setmode(IO.BCM)
 
 IO.setup(SOLENOID_VALVE, IO.OUT, initial = IO.LOW)
 
-try:
-    while True:
+while True:
+    try:
         IO.output(SOLENOID_VALVE, True)
         print("Opening valve")
         time.sleep(1)
@@ -17,8 +17,8 @@ try:
         print("Closing valve")
         time.sleep(5)
 
-except KeyboardInterrupt:
-    print("Keyboard interrupt detected")
-    IO.cleanup()
-    sys.exit()
+    except KeyboardInterrupt:
+        print("Keyboard interrupt detected")
+        IO.cleanup()
+        sys.exit()
 
