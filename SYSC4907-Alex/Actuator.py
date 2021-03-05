@@ -10,10 +10,10 @@ IO.setup(SOLENOID_VALVE, IO.OUT, initial = IO.LOW)
 
 try:
     while True:
-        IO.output(SOLENOID_VALVE, IO.HIGH)
+        IO.output(SOLENOID_VALVE, True)
         print("Opening valve")
         time.sleep(1)
-        IO.output(SOLENOID_VALVE, IO.LOW)
+        IO.output(SOLENOID_VALVE, False)
         print("Closing valve")
         time.sleep(5)
 
