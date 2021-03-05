@@ -1,7 +1,7 @@
 import RPi.GPIO as IO
 import time, sys
 
-SOLENOID_VALVE = 18 ## Enter pin number here
+SOLENOID_VALVE = 23 ## Enter pin number here
 
 IO.setwarnings(False)
 IO.setmode(IO.BCM)
