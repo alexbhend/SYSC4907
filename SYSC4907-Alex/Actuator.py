@@ -11,8 +11,10 @@ IO.setup(SOLENOID_VALVE, IO.OUT, initial = IO.LOW)
 try:
     while True:
         IO.output(SOLENOID_VALVE, IO.HIGH)
+        print("Opening valve")
         time.sleep(1)
         IO.output(SOLENOID_VALVE, IO.LOW)
+        print("Closing valve")
         time.sleep(5)
 
 except KeyboardInterrupt:
