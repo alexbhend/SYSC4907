@@ -34,8 +34,8 @@ def thingspeak_read():
         KWhrs = conn["field4"]
         Actuate = conn["field5"]
         print("userID: " + userID + "    type: " + type + " Litres: " + Litres + "   KWhrs: " + KWhrs + "    Actuate: " + Actuate)
-
     except:
+        print(conn.getresponse().status)
         print("data not retrieved")
 
 
