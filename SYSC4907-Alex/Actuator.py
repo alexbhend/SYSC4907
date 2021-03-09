@@ -80,8 +80,8 @@ moreValves = True
 
 ## Determine how many valves are in use and set up GPIO for the valves along with the threads
 while (moreValves):
-    checkMore = input("Do you have more valves to input? (y/n): ")
-    if(checkMore == 'y'):
+    checkMore = input("Do you have more valves to input? (1 for yes, 0 for no): ")
+    if(checkMore == 1):
         valvePin = input("Which GPIO pin was used for the first valve?: ")
         IO.setup(valvePin, IO.OUT, initial = IO.LOW)
         newthread = ActuatorThread(userID, valvePin)
