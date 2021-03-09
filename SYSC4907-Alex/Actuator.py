@@ -54,7 +54,7 @@ def checkTimes(startTime, endTime, curTime):
     start_hrs = int(startTime.split(":")[0])
     start_mins = int(startTime.split(":")[1])
     start_secs = int(startTime.split(":")[2].strip("\n"))
-    start_in_secs = start_hrs*3600 + start_mins*60 _ start_secs
+    start_in_secs = start_hrs*3600 + start_mins*60 + start_secs
 
     end_hrs = int(endTime.split(":")[0])
     end_mins = int(endTime.split(":")[1])
