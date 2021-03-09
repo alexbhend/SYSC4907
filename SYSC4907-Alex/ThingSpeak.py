@@ -1,6 +1,5 @@
-import urllib.parse
-import urllib.request
-import http.client
+import urllib
+import httplib
 import time
 import json
 
@@ -16,7 +15,7 @@ READ_URL = "https://api.thingspeak.com/channels/1160881/feeds.json?api_key="
 READ_FOOTER = "&results=2"
 
 def thingspeak_post(userID, type, Litres, KWhrs, Actuate, timeslot):
-    params = urllib.parse.urlencode(
+    params = urllib.urlencode(
         {
             "field1": userID,
             "field2": type,
@@ -31,7 +30,7 @@ def thingspeak_post(userID, type, Litres, KWhrs, Actuate, timeslot):
             "Content-typZZe": "application/x-www-form-urlencoded",
             "Accept": "text/plain",
         }
-    conn = http.client.HTTPConnection("api.thingspeak.com:80")
+    conn = httplib.HTTPConnection("api.thingspeak.com:80")
     try:
         conn.request("POST", "/update", params, headers)
         response = conn.getresponse()
@@ -43,7 +42,7 @@ def thingspeak_post(userID, type, Litres, KWhrs, Actuate, timeslot):
 
 def thingspeak_read():
     try:
-        conn = urllib.request.urlopen("http://api.thingspeak.com/channels/%s/feeds/last.json?api_key=%s" % (CHANNEL_ID, READ_KEY))
+        conn = urllib.urlopen("http://api.thingspeak.com/channels/%s/feeds/last.json?api_key=%s" % (CHANNEL_ID, READ_KEY))
         response = conn.read()
         data = json.loads(response)
         return data
