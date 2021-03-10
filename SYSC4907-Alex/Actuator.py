@@ -19,17 +19,18 @@ class ActuatorThread(threading.Thread):
 ## Run method for the thread
     def run(self):
         jobs = []
-        print("Started running valve on pin:", self.pinID)
+        print("Started running valve on pin: ", self.pinID)
         while True:
             try:
                 data = thingspeak_read()
                 if((data["field1"] == self.userID) and (data["field2"] == "newJob")):
                     job = data["field6"]
-                    jobs.append(job)
+                    if(checkIfJob(job, jobs)):
+                        jobs.append(job)
+                        print("New job received: ", job)
                 if((data["field1"] == self.userID) and (data["field2"] == "deleteJob")):
-                    for job in jobs:
-                        if(job == data["field6"]):
-                            jobs.remove(job)
+                    if(not checkIfJob(job, jobs)):
+                        jobs.remove(job)
                 handleJobs(jobs, self.pinID)
             except KeyboardInterrupt:
                 print("Keyboard interrupt detected")
@@ -46,6 +47,7 @@ def handleJobs(jobs, valveNum):
         end_time = job.split("-")[1]
         if(checkTimes(start_time, end_time, curr_time)):
             IO.output(valveNum, IO.HIGH)
+            print("Doing job: ", job)
         else:
             IO.output(valveNum, IO.LOW)
 
@@ -70,6 +72,13 @@ def checkTimes(startTime, endTime, curTime):
         return True
     else:
         return False
+
+## Function to see if the job is already present in the list returns True if job not already present, False if already present
+def checkIfJob(job, jobs):
+    for j in jobs:
+        if(j == job):
+            return False
+    return True
 
 ## Set up phase upon starting the program
 print("------------------------------SET UP------------------------------")
