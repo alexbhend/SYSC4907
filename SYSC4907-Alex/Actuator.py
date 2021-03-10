@@ -27,13 +27,15 @@ class ActuatorThread(threading.Thread):
                 if(checkIfJob(job, jobs)):
                     jobs.append(job)
                     print("New job received: ", job)
-            if((data["field1"].strip("\"") == self.userID) and (data["field2"] == "deleteJob")):
+            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "deleteJob")):
                 job = data["field6"]
                 if(not checkIfJob(job, jobs)):
                     jobs.remove(job)
+            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "actuateNow")):
+                actuateNow(data["field5"], self.pinID)
             handleJobs(jobs, self.pinID)
 
-## Function to handle the jobs inputted by the user
+## Function to handle the jobs inputted by the user and open/close valves accordingly
 def handleJobs(jobs, valveNum):
     now = datetime.now()
     curr_time = now.strftime("%H:%M:%S")
@@ -46,6 +48,16 @@ def handleJobs(jobs, valveNum):
             print("Doing job: ", job)
         else:
             IO.output(valveNum, IO.LOW)
+
+## Function to open/close the valve immediately
+def actuateNow(openClose, valveNum):
+    if(openClose == "True"):
+        IO.output(valveNum, IO.HIGH)
+        print("Opening valve: ", valveNum)
+    else:
+        IO.output(valveNum, IO.HIGH)
+        print("Closing valve: ", valveNum)
+
 
 ## Function to check if the valve should be open or not depending on the user's settings    
 def checkTimes(startTime, endTime, curTime):

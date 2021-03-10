@@ -49,19 +49,3 @@ def thingspeak_read():
     except:
         print(conn.getresponse().status)
         print("data not retrieved")
-
-thingspeak_post(123, "newJob", "", "", "", "20:30:00-20:31:00")
-
-
-"""
-data = thingspeak_read()
-print("userID: " + data["field1"] + "\n")
-print("type: " + data["field2"] + "\n")
-print("Litres: " + data["field3"] + "\n")
-print("KWhrs: " + data["field4"] + "\n")
-print("Actuate: " + data["field5"] + "\n")
-print("timeslot: " + data["field6"] + "\n")
-print("entryID: " + str(data["entry_id"]) + "\n")
-print("created at: " + str(data["created_at"]) + "\n")
-
-"""
