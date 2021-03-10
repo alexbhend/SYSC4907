@@ -22,7 +22,8 @@ class ActuatorThread(threading.Thread):
         print("Started running valve on pin: ", self.pinID)
         while True:
             data = thingspeak_read()
-            print("field1: " + data["field1"].strip("\"") + "   field2: " + data["field2"] + "field6: " + data["field6"])
+            print(data["field1"].strip("\"") == self.userID)
+            print(data["field2"] == "newJob")
             if((data["field1"].strip("\"") == self.userID) and (data["field2"] == "newJob")):
                 job = data["field6"]
                 if(checkIfJob(job, jobs)):
