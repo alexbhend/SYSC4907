@@ -22,9 +22,7 @@ class ActuatorThread(threading.Thread):
         print("Started running valve on pin: ", self.pinID)
         while True:
             data = thingspeak_read()
-            print(data["field1"])
-            print(self.userID)
-            if((data["field1"].strip("\"") == self.userID) and (data["field2"] == "newJob")):
+            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "newJob")):
                 job = data["field6"]
                 if(checkIfJob(job, jobs)):
                     jobs.append(job)
