@@ -44,7 +44,7 @@ def handleJobs(jobs, valveNum):
     for job in jobs:
         start_time = job.split("-")[0]
         end_time = job.split("-")[1]
-        if(checkTimes()):
+        if(checkTimes(start_time, end_time, curr_time)):
             IO.output(valveNum, IO.HIGH)
         else:
             IO.output(valveNum, IO.LOW)
@@ -82,12 +82,14 @@ moreValves = True
 while (moreValves):
     checkMore = input("Do you have more valves to input? (1 for yes, 0 for no): ")
     if(checkMore == 1):
-        valvePin = input("Which GPIO pin was used for the first valve?: ")
+        valvePin = input("Which GPIO pin was used for the valve?: ")
         IO.setup(valvePin, IO.OUT, initial = IO.LOW)
         newthread = ActuatorThread(userID, valvePin)
         newthread.start()
         threads.append(newthread)
-        newthread.join()
         moreValves = True
     else:
         moreValves = False
+
+for t in threads:
+    t.join()

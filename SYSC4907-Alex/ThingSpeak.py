@@ -50,7 +50,7 @@ def thingspeak_read():
         print(conn.getresponse().status)
         print("data not retrieved")
 
-thingspeak_post(123, "newJob", "", "", "", "19:10:00-19:12:00")
+thingspeak_post(123, "newJob", "", "", "", "19:20:00-19:21:00")
 
 
 """
