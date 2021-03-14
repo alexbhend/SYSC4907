@@ -20,7 +20,7 @@ class ActuatorThread(threading.Thread):
 ## Run method for the thread
     def run(self):
         jobs = []
-        print("Started running valve on pin: ", self.pinID)
+        print("\nStarted running valve on pin: ", self.pinID)
         while True:
             try:
                 data = thingspeak_read()
