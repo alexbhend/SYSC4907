@@ -14,7 +14,7 @@ class ActuatorThread(threading.Thread):
 ## Init method for the thread
     def __init__(self, userID, pinID):
         threading.Thread.__init__(self)
-        self.userID = int(userID)
+        self.userID = userID
         self.pinID = pinID
 
 ## Run method for the thread
