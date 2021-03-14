@@ -24,7 +24,6 @@ class ActuatorThread(threading.Thread):
         while True:
             data = thingspeak_read()
             tsUserID = data["field1"]
-            intTsUserID = int(tsUserID)
             if((tsUserID == self.userID) and (data["field2"] == "newJob")):
                 job = data["field6"]
                 if(checkIfJob(job, jobs)):
