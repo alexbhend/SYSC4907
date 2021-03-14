@@ -29,11 +29,11 @@ class ActuatorThread(threading.Thread):
                 if(checkIfJob(job, jobs)):
                     jobs.append(job)
                     print("New job received: ", job)
-            if((tsUserID == self.userID) and (data["field2"] == "deleteJob")):
+            if((int(tsUserID) == self.userID) and (data["field2"] == "deleteJob")):
                 job = data["field6"]
                 if(not checkIfJob(job, jobs)):
                     jobs.remove(job)
-            if((tsUserID == self.userID) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
+            if((int(tsUserID) == self.userID) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
                 print("Opening valve: ", self.pinID)
                 actuateNow(self.pinID)
             handleJobs(jobs, self.pinID)
