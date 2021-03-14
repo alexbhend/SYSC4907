@@ -22,25 +22,20 @@ class ActuatorThread(threading.Thread):
         jobs = []
         print("Started running valve on pin: " + str(self.pinID) + "\n")
         while True:
-            try:
-                data = thingspeak_read()
-                if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "newJob")):
-                    job = data["field6"]
-                    if(checkIfJob(job, jobs)):
-                        jobs.append(job)
-                        print("New job received: ", job)
-                if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "deleteJob")):
-                    job = data["field6"]
-                    if(not checkIfJob(job, jobs)):
-                        jobs.remove(job)
-                if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
-                    print("Opening valve: ", self.pinID)
-                    actuateNow(self.pinID)
-                handleJobs(jobs, self.pinID)
-            except KeyboardInterrupt:
-                print("Keyboard interrupt detected")
-                IO.cleanup()
-                sys.exit()
+            data = thingspeak_read()
+            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "newJob")):
+                job = data["field6"]
+                if(checkIfJob(job, jobs)):
+                    jobs.append(job)
+                    print("New job received: ", job)
+            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "deleteJob")):
+                job = data["field6"]
+                if(not checkIfJob(job, jobs)):
+                    jobs.remove(job)
+            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
+                print("Opening valve: ", self.pinID)
+                actuateNow(self.pinID)
+            handleJobs(jobs, self.pinID)
 
 ## Function to handle the jobs inputted by the user and open/close valves accordingly
 def handleJobs(jobs, valveNum):
