@@ -23,16 +23,17 @@ class ActuatorThread(threading.Thread):
         print("Started running valve on pin: " + str(self.pinID) + "\n")
         while True:
             data = thingspeak_read()
-            if((int(data["field1"]) == self.userID) and (data["field2"] == "newJob")):
+            tsUserID = int(data["field1"])
+            if((tsUserID == self.userID) and (data["field2"] == "newJob")):
                 job = data["field6"]
                 if(checkIfJob(job, jobs)):
                     jobs.append(job)
                     print("New job received: ", job)
-            if((int(data["field1"]) == self.userID) and (data["field2"] == "deleteJob")):
+            if((tsUserID == self.userID) and (data["field2"] == "deleteJob")):
                 job = data["field6"]
                 if(not checkIfJob(job, jobs)):
                     jobs.remove(job)
-            if((int(data["field1"]) == self.userID) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
+            if((tsUserID == self.userID) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
                 print("Opening valve: ", self.pinID)
                 actuateNow(self.pinID)
             handleJobs(jobs, self.pinID)
