@@ -14,7 +14,7 @@ class ActuatorThread(threading.Thread):
 ## Init method for the thread
     def __init__(self, userID, pinID):
         threading.Thread.__init__(self)
-        self.userID = userID
+        self.userID = int(userID)
         self.pinID = pinID
 
 ## Run method for the thread
@@ -23,7 +23,7 @@ class ActuatorThread(threading.Thread):
         print("Started running valve on pin: " + str(self.pinID) + "\n")
         while True:
             data = thingspeak_read()
-            tsUserID = data["field1"]
+            tsUserID = (data["field1"]).int()
             if((tsUserID == self.userID) and (data["field2"] == "newJob")):
                 job = data["field6"]
                 if(checkIfJob(job, jobs)):
