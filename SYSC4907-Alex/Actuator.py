@@ -1,7 +1,8 @@
 import RPi.GPIO as IO
 import time, sys
 from datetime import datetime
-from ThingSpeak import thingspeak_post, thingspeak_read
+from ThingSpeak import thingspeak_post
+from ThingSpeak import thingspeak_read
 import threading
 
 IO.setwarnings(False)
@@ -21,19 +22,25 @@ class ActuatorThread(threading.Thread):
         jobs = []
         print("Started running valve on pin: ", self.pinID)
         while True:
-            data = thingspeak_read()
-            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "newJob")):
-                job = data["field6"]
-                if(checkIfJob(job, jobs)):
-                    jobs.append(job)
-                    print("New job received: ", job)
-            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "deleteJob")):
-                job = data["field6"]
-                if(not checkIfJob(job, jobs)):
-                    jobs.remove(job)
-            if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "actuateNow")):
-                actuateNow(data["field5"], self.pinID)
-            handleJobs(jobs, self.pinID)
+            try:
+                data = thingspeak_read()
+                if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "newJob")):
+                    job = data["field6"]
+                    if(checkIfJob(job, jobs)):
+                        jobs.append(job)
+                        print("New job received: ", job)
+                if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "deleteJob")):
+                    job = data["field6"]
+                    if(not checkIfJob(job, jobs)):
+                        jobs.remove(job)
+                if((int(data["field1"]) == int(self.userID)) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
+                    print("Opening valve: ", self.pinID)
+                    actuateNow(self.pinID)
+                handleJobs(jobs, self.pinID)
+            except KeyboardInterrupt:
+                print("Keyboard interrupt detected")
+                IO.cleanup()
+                sys.exit()
 
 ## Function to handle the jobs inputted by the user and open/close valves accordingly
 def handleJobs(jobs, valveNum):
@@ -50,13 +57,16 @@ def handleJobs(jobs, valveNum):
             IO.output(valveNum, IO.LOW)
 
 ## Function to open/close the valve immediately
-def actuateNow(openClose, valveNum):
-    if(openClose == "True"):
-        IO.output(valveNum, IO.HIGH)
-        print("Opening valve: ", valveNum)
-    else:
-        IO.output(valveNum, IO.HIGH)
-        print("Closing valve: ", valveNum)
+def actuateNow(valveNum):
+    while True:
+        data = thingspeak_read()
+        openClose = data["field5"]
+        if(openClose == "False"):
+            IO.output(valveNum, IO.LOW)
+            print("Closing valve: ", valveNum)
+            break
+        else:
+            IO.output(valveNum, IO.HIGH)
 
 
 ## Function to check if the valve should be open or not depending on the user's settings    
