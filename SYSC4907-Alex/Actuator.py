@@ -20,7 +20,7 @@ class ActuatorThread(threading.Thread):
 ## Run method for the thread
     def run(self):
         jobs = []
-        print("\nStarted running valve on pin: ", self.pinID)
+        print("\n" + "Started running valve on pin: ", self.pinID)
         while True:
             try:
                 data = thingspeak_read()
@@ -109,7 +109,7 @@ moreValves = True
 while (moreValves):
     checkMore = input("Do you have more valves to input? (1 for yes, 0 for no): ")
     if(checkMore == 1):
-        valvePin = input("Which GPIO pin was used for the valve?: ")
+        valvePin = input("\n" + "Which GPIO pin was used for the valve?: ")
         IO.setup(valvePin, IO.OUT, initial = IO.LOW)
         newthread = ActuatorThread(userID, valvePin)
         newthread.start()
