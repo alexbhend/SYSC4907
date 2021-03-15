@@ -3,6 +3,6 @@ import time
 
 thingspeak_post("123", "actuateNow", "", "", "True", "")
 
-time.sleep(5)
+time.sleep(10)
 
 thingspeak_post("123", "actuateNow", "", "", "False", "")
