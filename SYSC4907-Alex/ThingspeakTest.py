@@ -1,3 +1,8 @@
 from ThingSpeak import thingspeak_post
+import time
 
-thingspeak_post("1234", "newJob", "", "", "", "19:05:00-19:05:20")
+thingspeak_post("123", "actuateNow", "", "", "True", "")
+
+time.sleep(5)
+
+thingspeak_post("123", "actuateNow", "", "", "False", "")
