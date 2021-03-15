@@ -18,7 +18,7 @@ class WaterflowThread(threading.Thread):
     def __init__(self, userID, flowPin):
         threading.Thread.__init__(self)
         self.userID = userID
-        self.flowPin = flowPin
+        self.flowPin = int(flowPin)
     
     def run(self):
         print("Started running water meter for user: ", self.userID)
@@ -30,7 +30,7 @@ class WaterflowThread(threading.Thread):
         flowMeter = IO.input(self.flowPin)
 
         while True:
-            try:
+            #try:
                 waterFlow = IO.input(self.flowPin)
                 if (waterFlow != flowMeter):
                     count += 1
@@ -38,13 +38,13 @@ class WaterflowThread(threading.Thread):
                     waterEventTime = time.time() + inactivitySecs
                 else:
                     if(time.time() > waterEventTime):
-                        thingspeak_post(self.userID, "waterUpdate", (count/litreInPulses), "", "", "")
+                        thingspeak_post(self.userID, "waterUpdate", round((float(count)/float(litreInPulses)), 3), "", "", "")
                         waterEventTime = time.time() + inactivitySecs
                         count = 0
-            except KeyboardInterrupt:
-                print("Keyboard interrupt detected")
-                IO.cleanup()
-                sys.exit()
+            #except KeyboardInterrupt:
+                #print("Keyboard interrupt detected")
+                #IO.cleanup()
+                #sys.exit()
 
 ## Set up phase upon starting the program
 print("------------------------------SET UP------------------------------")
@@ -52,7 +52,7 @@ print("------------------------------SET UP------------------------------")
 threads = []
 userID = input("What is your user ID?: ")
 flowPin = input("Which GPIO pin was used for the flow sensor?: ")
-IO.setup(flowPin, IO.IN, pull_up_down = IO.PUD_UP)
+IO.setup(int(flowPin), IO.IN, pull_up_down = IO.PUD_UP)
 newthread = WaterflowThread(userID, flowPin)
 newthread.start()
 threads.append(newthread)
