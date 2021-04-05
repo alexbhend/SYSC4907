@@ -3,5 +3,5 @@ import time
 
 
 #thingspeak_post("123", "actuateNow", "", "", "False", "")
-print(time.time())
-thingspeak_post("123", "actuateNow", "", "", "True", "")
+print("Sent message at: " + str(time.time()))
+thingspeak_post("1234", "actuateNow", "", "", "True", "")

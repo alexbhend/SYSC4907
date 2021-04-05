@@ -59,12 +59,12 @@ def actuateNow(valveNum):
         openClose = data["field5"]
         if(openClose == "False"):
             IO.output(valveNum, IO.LOW)
-            print("Closed at :" + time.time())
+            print("Closed at :" + str(time.time()))
             print("Closing valve: ", valveNum)
             break
         else:
             IO.output(valveNum, IO.HIGH)
-            print("Opened at :" + time.time())
+            print("Opened at :" + str(time.time()))
 
 
 ## Function to check if the valve should be open or not depending on the user's settings    
