@@ -46,7 +46,7 @@ def handleJobs(jobs, valveNum):
     now = datetime.now()
     curr_time = now.strftime("%H:%M:%S")
 
-    for job in range(len(jobs)):
+    for job in jobs:
         start_time = job.split("-")[0]
         end_time = job.split("-")[1]
         if(checkTimes(start_time, end_time, curr_time)):
