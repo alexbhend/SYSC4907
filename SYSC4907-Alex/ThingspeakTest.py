@@ -10,3 +10,4 @@ while count < 25:
     print("Sent removeJob message at: " + str(time.time()))
     thingspeak_post("123", "removeJob", "", "", "", "14:00:00-18:00:00")
     count += 1
+    time.sleep(16)
