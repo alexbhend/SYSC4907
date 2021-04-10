@@ -33,6 +33,7 @@ class ActuatorThread(threading.Thread):
                 job = data["field6"]
                 if(not checkIfJob(job, jobs)):
                     jobs.remove(job)
+                    print("Job: " + str(job) + " deleted successfully!")
             if((int(tsUserID) == self.userID) and (data["field2"] == "actuateNow") and (data["field5"] == "True")):
                 print("Opening valve: ", self.pinID)
                 actuateNow(self.pinID)
@@ -47,10 +48,12 @@ def handleJobs(jobs, valveNum):
         start_time = job.split("-")[0]
         end_time = job.split("-")[1]
         if(checkTimes(start_time, end_time, curr_time)):
+            print("Started: " + str(time.time()))
             IO.output(valveNum, IO.HIGH)
             print("Doing job: ", job)
         else:
             IO.output(valveNum, IO.LOW)
+            print("Stopped: " + str(time.time()))
 
 ## Function to open/close the valve immediately
 def actuateNow(valveNum):
